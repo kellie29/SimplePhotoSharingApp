@@ -3,7 +3,7 @@ import {View,StyleSheet,Image,Text,TouchableOpacity,Linking} from 'react-native'
 import { WP } from '../../helpers';
 //ImageCard is an component for showing card having props image,author, and share function
 export const ImageCard = props => {
-    console.log("showing passed props of item",props)
+    // console.log("showing passed props of item",props)
     return(
         <View style = {styles.container}>
             <View style = {styles.imageContainer}>
@@ -15,7 +15,8 @@ export const ImageCard = props => {
             <View style = {styles.details}>
                 <Text>{props.author}</Text>
                 <TouchableOpacity style = {styles.btnContainer}
-                onPress = {()=>{Linking.openURL(`sms:123456789?body=${props.showGreyScale ?props.download_url +'?grayscale' :props.download_url}`)}}>
+                // onPress = {()=>{Linking.openURL(`sms:123456789?body=${props.showGreyScale ?props.download_url +'?grayscale' :props.download_url}`)}}>
+                onPress = {()=>{console.log(`sms:123456789?body=photoapp://${props.index}`); Linking.openURL(`sms:123456789?body=photoapp://photo/${props.index}`);}}>
                 <Text>Share</Text>
                 </TouchableOpacity>
             </View>

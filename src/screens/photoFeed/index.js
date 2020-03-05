@@ -23,7 +23,7 @@ class PhotoFeed extends Component {
     componentDidMount() {
         Util.getImagesFeed(
             (response) => {
-                console.log("[imageFeed], showing images array", response)
+                // console.log("[imageFeed], showing images array", response)
                 this.setState({ loader: false })
                 if (response.length > 0) {
                     this.setState({
@@ -86,10 +86,11 @@ class PhotoFeed extends Component {
                 <View style={styles.lisitngContainer}>
                     <FlatList
                         data={this.state.imagesFeed}
-                        renderItem={({ item }) => (
+                        renderItem={({ item, index }) => (
                             <Components.ImageCard
                                 showGreyScale={this.state.tone}
                                 {...item}
+                                index={index}
                             />
                         )}
                     />
