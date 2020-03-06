@@ -26,7 +26,6 @@ class PhotoFeed extends Component {
             if(this.props.navigation.state.params != nextProps.navigation.state.params ){
               const linkedId =  this.props.navigation.state.params.secondId
               console.log("filtered image",filteredImage ,"id",linkedId)
-
               if(this.state.imagesFeed.length >0){
                filteredImage = this.state.imagesFeed.filter(data => data.id == linkedId );
               console.log("filtered image",filteredImage ,"id",linkedId)
@@ -34,17 +33,11 @@ class PhotoFeed extends Component {
                   imagesFeed:filteredImage
               })
               }
-    
-            }
-            
+            }   
         } catch (error) {
-            console.log('showing error',error)
-            
+            console.log('showing error',error)  
         }
-       
-
     }
-
     componentDidMount() {
         Util.getImagesFeed(
             (response) => {

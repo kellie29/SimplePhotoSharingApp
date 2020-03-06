@@ -9,7 +9,8 @@ import PhotoFeed from '../screens/photoFeed';
     navigationOptions: {
       headerLayoutPreset:'center'
     },
-    path: 'feed/:secondId'
+    path: 'feed/:secondId' //Path when you open as a link from browser with prefix demo://feed/1
+
   }
  });
  //exporting stack
