@@ -3,6 +3,7 @@ import { View, FlatList, ActivityIndicator, Linking } from 'react-native'
 import { styles } from './styles';
 import * as Components from '../../components'
 import * as Util from '../../helpers'
+let filteredImage
 class PhotoFeed extends Component {
     constructor(props) {
         super(props)
@@ -21,10 +22,26 @@ class PhotoFeed extends Component {
         }
     }
     componentWillUpdate(nextProps, nextState) {
-        if(this.props.navigation.state != nextProps.navigation.state ){
-            alert(this.props.navigation.state.params.secondId)
+        try {
+            if(this.props.navigation.state != nextProps.navigation.state ){
+              const linkedId =  this.props.navigation.state.params.secondId
+              console.log("filtered image",filteredImage ,"id",linkedId)
 
+              if(this.state.imagesFeed.length >0){
+               filteredImage = this.state.imagesFeed.filter(data => data.id == linkedId );
+              console.log("filtered image",filteredImage ,"id",linkedId)
+              this.setState({
+                  imagesFeed:filteredImage
+              })
+              }
+    
+            }
+            
+        } catch (error) {
+            console.log('showing error',error)
+            
         }
+       
 
     }
 
@@ -83,6 +100,7 @@ class PhotoFeed extends Component {
                 <View style={styles.lisitngContainer}>
                     <FlatList
                         data={this.state.imagesFeed}
+                        extraData = {this.state.imagesFeed}
                         renderItem={({ item, index }) => (
                             <Components.ImageCard
                                 showGreyScale={this.state.tone}
