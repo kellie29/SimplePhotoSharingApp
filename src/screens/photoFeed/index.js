@@ -23,7 +23,7 @@ class PhotoFeed extends Component {
     }
     componentWillUpdate(nextProps, nextState) {
         try {
-            if(this.props.navigation.state != nextProps.navigation.state ){
+            if(this.props.navigation.state.params != nextProps.navigation.state.params ){
               const linkedId =  this.props.navigation.state.params.secondId
               console.log("filtered image",filteredImage ,"id",linkedId)
 
