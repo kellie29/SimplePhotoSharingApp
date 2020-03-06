@@ -31,6 +31,10 @@
   [self.window makeKeyAndVisible];
   return YES;
 }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+  return [RCTLinkingManager application:application openURL:url      sourceApplication:sourceApplication annotation:annotation];
+}
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
@@ -40,10 +44,4 @@
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
- options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
-{
- return [RCTLinkingManager application:app openURL:url options:options];
-}
-
 @end

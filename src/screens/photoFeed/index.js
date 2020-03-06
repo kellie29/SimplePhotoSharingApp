@@ -20,10 +20,18 @@ class PhotoFeed extends Component {
             tone: true
         }
     }
+    componentWillUpdate(nextProps, nextState) {
+        if(this.props.navigation.state != nextProps.navigation.state ){
+            alert(this.props.navigation.state.params.secondId)
+
+        }
+
+    }
+
     componentDidMount() {
         Util.getImagesFeed(
             (response) => {
-                // console.log("[imageFeed], showing images array", response)
+                console.log("[imageFeed], showing images array")
                 this.setState({ loader: false })
                 if (response.length > 0) {
                     this.setState({
@@ -34,20 +42,8 @@ class PhotoFeed extends Component {
             (error) => {
                 this.setState({ loader: false })
             })
-        Linking.addEventListener('url', this.handleOpenURL);
 
     }
-
-    componentWillUnmount() {
-        Linking.removeEventListener('url', this.handleOpenURL);
-    }
-
-    handleOpenURL(event) {
-        console.log('in the url event ', event.url);
-        const route = e.url.replace(/.*?:\/\//g, '');
-        // do something with the url, in our case navigate(route)
-    }
-
     toneChanger(value) {
         if (value == 1) {
             this.setState({ tone: true })
@@ -58,6 +54,7 @@ class PhotoFeed extends Component {
     }
 
     render() {
+        console.log("showing proops ",this.state.imagesFeed)
         if (this.state.loader) {
             return (
                 <ActivityIndicator

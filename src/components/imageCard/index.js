@@ -16,7 +16,7 @@ export const ImageCard = props => {
                 <Text>{props.author}</Text>
                 <TouchableOpacity style = {styles.btnContainer}
                 // onPress = {()=>{Linking.openURL(`sms:123456789?body=${props.showGreyScale ?props.download_url +'?grayscale' :props.download_url}`)}}>
-                onPress = {()=>{console.log(`sms:123456789?body=photoapp://${props.index}`); Linking.openURL(`sms:123456789?body=photoapp://photo/${props.index}`);}}>
+                onPress = {()=>{console.log(`sms:123456789?body=`); Linking.openURL(`sms:123456789?body=demo://feed`);}}>
                 <Text>Share</Text>
                 </TouchableOpacity>
             </View>

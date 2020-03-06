@@ -9,9 +9,9 @@ import PhotoFeed from '../screens/photoFeed';
     navigationOptions: {
       headerLayoutPreset:'center'
     },
-    path: 'PhotoFeed'
+    path: 'feed/:secondId'
   }
  });
  //exporting stack
-const Routing = createAppContainer(MainApp);
-export default Routing;
+ export default createAppContainer(MainApp);
+
